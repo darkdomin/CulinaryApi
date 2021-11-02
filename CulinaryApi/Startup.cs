@@ -1,3 +1,4 @@
+using CulinaryApi.Core.Entieties;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -27,6 +28,8 @@ namespace CulinaryApi
         {
 
             services.AddControllers();
+            services.AddDbContext<CulinaryDbContext>();
+            services.AddAutoMapper(this.GetType().Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
