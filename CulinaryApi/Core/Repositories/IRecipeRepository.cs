@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace CulinaryApi.Core.Repositories
 {
-    interface IRecipeRepository
+    public interface IRecipeRepository
     {
         Task<Recipe> GetAsync(int id);
         Task<Recipe> GetAsync(string name);

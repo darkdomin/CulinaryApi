@@ -1,4 +1,7 @@
 using CulinaryApi.Core.Entieties;
+using CulinaryApi.Core.Repositories;
+using CulinaryApi.Infrastructure.Repositories;
+using CulinaryApi.Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +32,8 @@ namespace CulinaryApi
 
             services.AddControllers();
             services.AddDbContext<CulinaryDbContext>();
+            services.AddScoped<IRecipeRepository, RecipeRepository>();
+            services.AddScoped<IRecipeService, RecipeService>();
             services.AddAutoMapper(this.GetType().Assembly);
         }
 
