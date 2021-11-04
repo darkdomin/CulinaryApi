@@ -1,12 +1,12 @@
 ﻿using AutoMapper;
 using CulinaryApi.Core.Entieties;
 using CulinaryApi.Core.Repositories;
-using CulinaryApi.Infrastructure.DTO;
+using CulinaryApi.Infrastructure.DTO.Recipes;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace CulinaryApi.Infrastructure.Services
+namespace CulinaryApi.Infrastructure.Services.Recipes
 {
     public class RecipeService : IRecipeService
     {

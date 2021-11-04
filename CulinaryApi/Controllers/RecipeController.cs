@@ -1,10 +1,6 @@
-﻿using CulinaryApi.Core.Entieties;
-using CulinaryApi.Infrastructure.DTO;
+﻿using CulinaryApi.Infrastructure.DTO.Recipes;
 using CulinaryApi.Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CulinaryApi.Controllers

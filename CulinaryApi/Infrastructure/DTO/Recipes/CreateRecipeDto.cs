@@ -1,4 +1,4 @@
-﻿namespace CulinaryApi.Infrastructure.DTO
+﻿namespace CulinaryApi.Infrastructure.DTO.Recipes
 {
     public class CreateRecipeDto
     {

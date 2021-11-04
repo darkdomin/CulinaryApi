@@ -1,5 +1,4 @@
-﻿using CulinaryApi.Core.Entieties;
-using CulinaryApi.Infrastructure.DTO;
+﻿using CulinaryApi.Infrastructure.DTO.Recipes;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
