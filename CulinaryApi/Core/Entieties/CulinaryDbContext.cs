@@ -4,7 +4,7 @@ namespace CulinaryApi.Core.Entieties
 {
     public class CulinaryDbContext : DbContext
     {
-        private string _connectionString = "";
+        private string _connectionString = "Data Source=DARK\\SQLEXPRESS;Database=CulinaryDb;Trusted_Connection=True";
 
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Meal> Meals { get; set; }

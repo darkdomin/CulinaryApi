@@ -2,6 +2,11 @@ using CulinaryApi.Core.Entieties;
 using CulinaryApi.Core.Repositories;
 using CulinaryApi.Infrastructure.Repositories;
 using CulinaryApi.Infrastructure.Services;
+using CulinaryApi.Infrastructure.Services.Cuisines;
+using CulinaryApi.Infrastructure.Services.Difficulties;
+using CulinaryApi.Infrastructure.Services.meals;
+using CulinaryApi.Infrastructure.Services.Recipes;
+using CulinaryApi.Infrastructure.Services.Times;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,6 +39,14 @@ namespace CulinaryApi
             services.AddDbContext<CulinaryDbContext>();
             services.AddScoped<IRecipeRepository, RecipeRepository>();
             services.AddScoped<IRecipeService, RecipeService>();
+            services.AddScoped<ICuisineRepository, CuisineRepository>();
+            services.AddScoped<ICuisineService, CuisineService>();
+            services.AddScoped<IMealRepository, MealRepository>();
+            services.AddScoped<IMealService, MealService>();
+            services.AddScoped<ITimeRepository, TimeRepository>();
+            services.AddScoped<ITimeService, TimeService>();
+            services.AddScoped<IDifficultyRepository, DifficultyRepository>();
+            services.AddScoped<IDifficultyService, DifficultyService>();
             services.AddAutoMapper(this.GetType().Assembly);
         }
 

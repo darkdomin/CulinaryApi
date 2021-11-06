@@ -1,5 +1,6 @@
 ﻿using CulinaryApi.Core.Entieties;
 using CulinaryApi.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,17 +18,37 @@ namespace CulinaryApi.Infrastructure.Repositories
 
         public async Task<Recipe> GetAsync(int id)
         {
-            return await Task.FromResult(_dbContext.Recipes.SingleOrDefault(r => r.Id == id));
+            var result = await Task.FromResult(_dbContext
+                                         .Recipes
+                                         .Include(m => m.Meal)
+                                         .Include(c => c.Cuisine)
+                                         .Include(t => t.Time)
+                                         .Include(d => d.Difficult)
+                                         .SingleOrDefault(r => r.Id == id));
+            return result;
         }
 
         public async Task<Recipe> GetAsync(string name)
         {
-            return await Task.FromResult(_dbContext.Recipes.SingleOrDefault(r => r.Name == name));
+            return await Task.FromResult(_dbContext
+                                         .Recipes
+                                         .Include(m => m.Meal)
+                                         .Include(c => c.Cuisine)
+                                         .Include(t => t.Time)
+                                         .Include(d => d.Difficult)
+                                         .SingleOrDefault(r => r.Name == name));
+                                         
         }
 
         public async Task<IEnumerable<Recipe>> GetAllAsync(string name = "")
         {
-            var recipes = _dbContext.Recipes.AsEnumerable();
+            var recipes = _dbContext
+                          .Recipes
+                          .Include(m=>m.Meal)
+                          .Include(c=>c.Cuisine)
+                          .Include(t=>t.Time)
+                          .Include(d=>d.Difficult)
+                          .AsEnumerable();
 
             if (!string.IsNullOrEmpty(name))
             {

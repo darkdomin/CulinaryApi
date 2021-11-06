@@ -15,6 +15,13 @@ namespace CulinaryApi.Controllers
             _recipeService = recipeService;
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult> Get([FromRoute] int id)
+        {
+            var time = await _recipeService.GetAsync(id);
+            return Ok(time);
+        }
+
         [HttpGet]
         public async Task<ActionResult> Get()
         {
@@ -27,6 +34,13 @@ namespace CulinaryApi.Controllers
         {
             var recipeId = await _recipeService.CreateAsync(dto);
             return Created($"api/recipe/{recipeId}", null);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete([FromRoute] int id)
+        {
+            await _recipeService.DeleteAsync(id);
+            return NoContent();
         }
     }
 }

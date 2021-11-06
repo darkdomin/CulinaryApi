@@ -8,5 +8,10 @@ namespace CulinaryApi.Core.Entieties
         public string Name { get; protected set; }
 
         public virtual List<Recipe> Recipes { get; protected set; }
+
+        public Cuisine(string name)
+        {
+            Name = name;
+        }
     }
 }
