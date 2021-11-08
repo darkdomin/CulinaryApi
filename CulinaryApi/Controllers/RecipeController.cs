@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 namespace CulinaryApi.Controllers
 {
     [Route("api/recipe")]
+    [ApiController]
     public class RecipeController : ControllerBase
     {
         private readonly IRecipeService _recipeService;
@@ -34,6 +35,13 @@ namespace CulinaryApi.Controllers
         {
             var recipeId = await _recipeService.CreateAsync(dto);
             return Created($"api/recipe/{recipeId}", null);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Update([FromBody] UpdateRecipeDto dto, int id)
+        {
+            await _recipeService.UpdateAsync(dto, id);
+            return Ok();
         }
 
         [HttpDelete("{id}")]

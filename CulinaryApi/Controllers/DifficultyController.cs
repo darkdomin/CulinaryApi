@@ -39,6 +39,13 @@ namespace CulinaryApi.Controllers
             return Created($"api/recipe/difficulty/{difficultyId}", null);
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Update([FromBody] UpdateDifficultyDto dto, int id)
+        {
+            await _difficultyService.UpdateAsync(dto, id);
+            return Ok();
+        }
+
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete([FromRoute] int id)
         {

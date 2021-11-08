@@ -7,6 +7,7 @@ using CulinaryApi.Infrastructure.Services.Difficulties;
 using CulinaryApi.Infrastructure.Services.meals;
 using CulinaryApi.Infrastructure.Services.Recipes;
 using CulinaryApi.Infrastructure.Services.Times;
+using CulinaryApi.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -48,6 +49,7 @@ namespace CulinaryApi
             services.AddScoped<IDifficultyRepository, DifficultyRepository>();
             services.AddScoped<IDifficultyService, DifficultyService>();
             services.AddAutoMapper(this.GetType().Assembly);
+            services.AddScoped<ErrorHandlingMiddleware>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +59,8 @@ namespace CulinaryApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseMiddleware<ErrorHandlingMiddleware>();
 
             app.UseHttpsRedirection();
 

@@ -45,9 +45,12 @@ namespace CulinaryApi.Infrastructure.Services.meals
             return newMeal.Id;
         }
 
-        public Task UpdateAsync()
+        public async Task UpdateAsync(UpdateMealDto dto, int id)
         {
-            throw new NotImplementedException();
+            var meal = await _mealRepository.GetAsync(id);
+            meal.SetName(dto.Name);
+            await _mealRepository.UpdateAsync();
+            await Task.CompletedTask;
         }
 
         public async Task DeleteAsync(int id)

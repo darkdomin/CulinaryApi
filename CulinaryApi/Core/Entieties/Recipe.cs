@@ -15,5 +15,40 @@
         public virtual Difficulty Difficult { get; protected set; }
         public int TimeId { get; protected set; }
         public virtual Time Time { get; protected set; }
+
+        public void SetName(string name)
+        {
+            Name = name;
+        }
+
+        public void SetGrammar(string grammar)
+        {
+            Grammar = grammar;
+        }
+
+        public void SetExecution(string execution)
+        {
+            Execution = execution;
+        }
+
+        public void SetMealId(int mealId)
+        {
+            MealId = mealId;
+        }
+
+        public void SetCuisineId(int cuisineId)
+        {
+            CuisineId = cuisineId;
+        }
+
+        public void SetDifficultId(int difficultId)
+        {
+            DifficultId = difficultId;
+        }
+
+        public void SetTimeId(int timeId)
+        {
+            TimeId = timeId;
+        }
     }
 }

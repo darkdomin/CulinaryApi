@@ -43,18 +43,39 @@ namespace CulinaryApi.Infrastructure.Services.Recipes
         public async Task<int> CreateAsync(CreateRecipeDto dto)
         {
             var newRecipe = _mapper.Map<Recipe>(dto);
+            if (newRecipe == null)
+            {
+                throw new Exception();
+            }
             await _recipeRepository.AddAsync(newRecipe);
             return newRecipe.Id;
         }
 
-        public Task UpdateAsync()
+        public async Task UpdateAsync(UpdateRecipeDto dto, int id)
         {
-            throw new NotImplementedException();
+            var recipe = await _recipeRepository.GetAsync(id);
+            if(recipe == null)
+            {
+                throw new Exception();
+            }
+            recipe.SetName(dto.Name);
+            recipe.SetGrammar(dto.Grammar);
+            recipe.SetExecution(dto.Execution);
+            recipe.SetMealId(dto.MealId);
+            recipe.SetCuisineId(dto.CuisineId);
+            recipe.SetDifficultId(dto.DifficultId);
+            recipe.SetTimeId(dto.TimeId);
+            await _recipeRepository.UpdateAsync();
+            await Task.CompletedTask;
         }
 
         public async Task DeleteAsync(int id)
         {
             var recipe = await _recipeRepository.GetAsync(id);
+            if (recipe == null)
+            {
+                throw new Exception();
+            }
             await _recipeRepository.DeleteAsync(recipe);
             await Task.CompletedTask;
         }

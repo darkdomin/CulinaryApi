@@ -46,9 +46,10 @@ namespace CulinaryApi.Infrastructure.Repositories
             await Task.CompletedTask;
         }
 
-        public Task UpdateAsync()
+        public async Task  UpdateAsync()
         {
-            throw new NotImplementedException();
+            _dbContext.SaveChanges();
+            await Task.CompletedTask;
         }
 
         public async Task DeleteAsync(Time time)

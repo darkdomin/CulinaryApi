@@ -9,7 +9,7 @@ namespace CulinaryApi.Core.Entieties
 
         public virtual List<Recipe> Recipes { get; protected set; }
 
-        public Time(string name)
+        public void SetName(string name)
         {
             Name = name;
         }

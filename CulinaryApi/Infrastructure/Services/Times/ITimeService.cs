@@ -13,7 +13,7 @@ namespace CulinaryApi.Infrastructure.Services.Times
         Task<TimeDto> GetAsync(string name);
         Task<IEnumerable<TimeDto>> BrowseAsync(string name = null);
         Task<int> CreateAsync(CreateTimeDto dto);
-        Task UpdateAsync();
+        Task UpdateAsync(UpdateTimeDto dto, int id);
         Task DeleteAsync(int id);
     }
 }

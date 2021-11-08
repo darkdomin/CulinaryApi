@@ -10,7 +10,7 @@ namespace CulinaryApi.Infrastructure.Services.Difficulties
         Task<DifficultyDto> GetAsync(string name);
         Task<IEnumerable<DifficultyDto>> BrowseAsync(string name = null);
         Task<int> CreateAsync(CreateDifficultyDto dto);
-        Task UpdateAsync();
+        Task UpdateAsync(UpdateDifficultyDto dto, int id);
         Task DeleteAsync(int id);
     }
 }

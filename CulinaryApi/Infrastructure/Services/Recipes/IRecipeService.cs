@@ -10,7 +10,7 @@ namespace CulinaryApi.Infrastructure.Services
         Task<RecipeDto> GetAsync(string name);
         Task<IEnumerable<RecipeDto>> BrowseAsync(string name = null);
         Task<int> CreateAsync(CreateRecipeDto dto);
-        Task UpdateAsync();
+        Task UpdateAsync(UpdateRecipeDto dto, int id);
         Task DeleteAsync(int id);
     }
 }

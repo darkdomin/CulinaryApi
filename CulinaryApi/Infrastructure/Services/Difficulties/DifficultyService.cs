@@ -45,9 +45,12 @@ namespace CulinaryApi.Infrastructure.Services.Difficulties
             return newDifficulty.Id;
         }
 
-        public Task UpdateAsync()
+        public async Task UpdateAsync(UpdateDifficultyDto dto, int id)
         {
-            throw new NotImplementedException();
+            var difficulty = await _difficultyRepository.GetAsync(id);
+            difficulty.SetName(dto.Name);
+            await _difficultyRepository.UpdateAsync();
+            await Task.CompletedTask;
         }
 
         public async Task DeleteAsync(int id)

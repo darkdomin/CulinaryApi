@@ -14,7 +14,7 @@ namespace CulinaryApi.Infrastructure.Repositories
         public RecipeRepository(CulinaryDbContext dbContext)
         {
             _dbContext = dbContext;
-        }                                                                     //dodac wyjatki itd
+        }                                                                  
 
         public async Task<Recipe> GetAsync(int id)
         {

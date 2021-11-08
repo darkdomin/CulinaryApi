@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
 using CulinaryApi.Core.Entieties;
 using CulinaryApi.Core.Repositories;
+using CulinaryApi.Infrastructure.DTO.Meals;
 using CulinaryApi.Infrastructure.DTO.Times;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -45,9 +45,12 @@ namespace CulinaryApi.Infrastructure.Services.Times
             return newTime.Id;
         }
 
-        public Task UpdateAsync()
+        public async Task UpdateAsync(UpdateTimeDto dto, int id)
         {
-            throw new NotImplementedException();
+            var time = await _timeRepository.GetAsync(id);
+            time.SetName(dto.Name);
+            await _timeRepository.UpdateAsync();
+            await Task.CompletedTask;
         }
 
         public async Task DeleteAsync(int id)

@@ -38,6 +38,13 @@ namespace CulinaryApi.Controllers
             return Created($"api/recipe/time/{timeId}", null);
         }
 
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Update([FromBody] UpdateTimeDto dto, int id)
+        {
+            await _timeService.UpdateAsync(dto, id);
+            return Ok();
+        }
+
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete([FromRoute] int id)
         {
