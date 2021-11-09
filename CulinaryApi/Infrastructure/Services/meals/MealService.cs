@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using CulinaryApi.Core.Entieties;
 using CulinaryApi.Core.Repositories;
+using CulinaryApi.Exceptions;
 using CulinaryApi.Infrastructure.DTO.Meals;
+using CulinaryApi.Infrastructure.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -20,7 +22,7 @@ namespace CulinaryApi.Infrastructure.Services.meals
 
         public async Task<MealDto> GetAsync(int id)
         {
-            var meal = await _mealRepository.GetAsync(id);
+            var meal = await _mealRepository.GetOrFailAsync(id);
             var result = _mapper.Map<MealDto>(meal);
             return result;
         }
@@ -28,6 +30,10 @@ namespace CulinaryApi.Infrastructure.Services.meals
         public async Task<MealDto> GetAsync(string name)
         {
             var meal = await _mealRepository.GetAsync(name);
+            if(meal == null)
+            {
+                throw new NotFoundException("Meal not found.");
+            }
             var result = _mapper.Map<MealDto>(meal);
             return result;
         }
@@ -47,7 +53,7 @@ namespace CulinaryApi.Infrastructure.Services.meals
 
         public async Task UpdateAsync(UpdateMealDto dto, int id)
         {
-            var meal = await _mealRepository.GetAsync(id);
+            var meal = await _mealRepository.GetOrFailAsync(id);
             meal.SetName(dto.Name);
             await _mealRepository.UpdateAsync();
             await Task.CompletedTask;
@@ -55,7 +61,7 @@ namespace CulinaryApi.Infrastructure.Services.meals
 
         public async Task DeleteAsync(int id)
         {
-            var meal = await _mealRepository.GetAsync(id);
+            var meal = await _mealRepository.GetOrFailAsync(id);
             await _mealRepository.DeleteAsync(meal);
             await Task.CompletedTask;
         }

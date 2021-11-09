@@ -2,6 +2,7 @@
 using CulinaryApi.Core.Entieties;
 using CulinaryApi.Core.Repositories;
 using CulinaryApi.Infrastructure.DTO.Difficulties;
+using CulinaryApi.Infrastructure.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace CulinaryApi.Infrastructure.Services.Difficulties
 
         public async Task<DifficultyDto> GetAsync(int id)
         {
-            var difficulty = await _difficultyRepository.GetAsync(id);
+            var difficulty = await _difficultyRepository.GetOrFailAsync(id);
             var result = _mapper.Map<DifficultyDto>(difficulty);
             return result;
         }
@@ -47,7 +48,7 @@ namespace CulinaryApi.Infrastructure.Services.Difficulties
 
         public async Task UpdateAsync(UpdateDifficultyDto dto, int id)
         {
-            var difficulty = await _difficultyRepository.GetAsync(id);
+            var difficulty = await _difficultyRepository.GetOrFailAsync(id);
             difficulty.SetName(dto.Name);
             await _difficultyRepository.UpdateAsync();
             await Task.CompletedTask;
@@ -55,7 +56,7 @@ namespace CulinaryApi.Infrastructure.Services.Difficulties
 
         public async Task DeleteAsync(int id)
         {
-            var difficulty = await _difficultyRepository.GetAsync(id);
+            var difficulty = await _difficultyRepository.GetOrFailAsync(id);
             await _difficultyRepository.DeleteAsync(difficulty);
             await Task.CompletedTask;
         }

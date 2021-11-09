@@ -4,3 +4,11 @@
 2021-11-08 21:29:39.0942 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
 2021-11-08 21:29:39.1168 Info Configuration initialized.
 2021-11-08 21:29:39.1168 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-08 21:49:18.5812 Info Message Template Auto Format enabled
+2021-11-08 21:49:18.6317 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-08 21:49:18.7082 Info Adding target FileTarget(Name=exceptions)
+2021-11-08 21:49:18.7582 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-08 21:49:18.7947 Info Configuration initialized.
+2021-11-08 21:49:18.7947 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-08 21:49:32.1960 Info AppDomain Shutting down. Logger closing...
+2021-11-08 21:49:32.2178 Info Logger has been shut down.

@@ -3,6 +3,7 @@ using CulinaryApi.Core.Entieties;
 using CulinaryApi.Core.Repositories;
 using CulinaryApi.Infrastructure.DTO.Meals;
 using CulinaryApi.Infrastructure.DTO.Times;
+using CulinaryApi.Infrastructure.Extensions;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -20,7 +21,7 @@ namespace CulinaryApi.Infrastructure.Services.Times
 
         public async Task<TimeDto> GetAsync(int id)
         {
-            var time = await _timeRepository.GetAsync(id);
+            var time = await _timeRepository.GetOrFailAsync(id);
             var result = _mapper.Map<TimeDto>(time);
             return result;
         }
@@ -47,7 +48,7 @@ namespace CulinaryApi.Infrastructure.Services.Times
 
         public async Task UpdateAsync(UpdateTimeDto dto, int id)
         {
-            var time = await _timeRepository.GetAsync(id);
+            var time = await _timeRepository.GetOrFailAsync(id);
             time.SetName(dto.Name);
             await _timeRepository.UpdateAsync();
             await Task.CompletedTask;
@@ -55,7 +56,7 @@ namespace CulinaryApi.Infrastructure.Services.Times
 
         public async Task DeleteAsync(int id)
         {
-            var time = await _timeRepository.GetAsync(id);
+            var time = await _timeRepository.GetOrFailAsync(id);
             await _timeRepository.DeleteAsync(time);
             await Task.CompletedTask;
         }

@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using CulinaryApi.Core.Entieties;
 using CulinaryApi.Core.Repositories;
+using CulinaryApi.Exceptions;
 using CulinaryApi.Infrastructure.DTO.Recipes;
+using CulinaryApi.Infrastructure.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -21,7 +23,7 @@ namespace CulinaryApi.Infrastructure.Services.Recipes
 
         public async Task<RecipeDto> GetAsync(int id)
         {
-            var recipe = await _recipeRepository.GetAsync(id);
+            var recipe = await _recipeRepository.GetOrFailAsync(id);
             var result = _mapper.Map<RecipeDto>(recipe);
             return result;
         }
@@ -29,6 +31,10 @@ namespace CulinaryApi.Infrastructure.Services.Recipes
         public async Task<RecipeDto> GetAsync(string name)
         {
             var recipe = await _recipeRepository.GetAsync(name);
+            if (recipe == null)
+            {
+                throw new NotFoundException("Recipe not found.");
+            }
             var result = _mapper.Map<RecipeDto>(recipe);
             return result;
         }
@@ -43,21 +49,13 @@ namespace CulinaryApi.Infrastructure.Services.Recipes
         public async Task<int> CreateAsync(CreateRecipeDto dto)
         {
             var newRecipe = _mapper.Map<Recipe>(dto);
-            if (newRecipe == null)
-            {
-                throw new Exception();
-            }
             await _recipeRepository.AddAsync(newRecipe);
             return newRecipe.Id;
         }
 
         public async Task UpdateAsync(UpdateRecipeDto dto, int id)
         {
-            var recipe = await _recipeRepository.GetAsync(id);
-            if(recipe == null)
-            {
-                throw new Exception();
-            }
+            var recipe = await _recipeRepository.GetOrFailAsync(id);
             recipe.SetName(dto.Name);
             recipe.SetGrammar(dto.Grammar);
             recipe.SetExecution(dto.Execution);
@@ -71,11 +69,7 @@ namespace CulinaryApi.Infrastructure.Services.Recipes
 
         public async Task DeleteAsync(int id)
         {
-            var recipe = await _recipeRepository.GetAsync(id);
-            if (recipe == null)
-            {
-                throw new Exception();
-            }
+            var recipe = await _recipeRepository.GetOrFailAsync(id);
             await _recipeRepository.DeleteAsync(recipe);
             await Task.CompletedTask;
         }

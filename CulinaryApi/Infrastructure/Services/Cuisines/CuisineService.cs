@@ -2,6 +2,7 @@
 using CulinaryApi.Core.Entieties;
 using CulinaryApi.Core.Repositories;
 using CulinaryApi.Infrastructure.DTO.Cuisines;
+using CulinaryApi.Infrastructure.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace CulinaryApi.Infrastructure.Services.Cuisines
 
         public async Task<CuisineDto> GetAsync(int id)
         {
-            var cuisine = await _cuisineRepository.GetAsync(id);
+            var cuisine = await _cuisineRepository.GetOrFailAsync(id);
             var result = _mapper.Map<CuisineDto>(cuisine);
             return result;
         }
@@ -47,7 +48,7 @@ namespace CulinaryApi.Infrastructure.Services.Cuisines
 
         public async Task UpdateAsync(UpdateCuisineDto dto, int id)
         {
-            var cuisine = await _cuisineRepository.GetAsync(id);
+            var cuisine = await _cuisineRepository.GetOrFailAsync(id);
             cuisine.SetName(dto.Name);
             await _cuisineRepository.UpdateAsync();
             await Task.CompletedTask;
@@ -55,7 +56,7 @@ namespace CulinaryApi.Infrastructure.Services.Cuisines
 
         public async Task DeleteAsync(int id)
         {
-            var cuisine = await _cuisineRepository.GetAsync(id);
+            var cuisine = await _cuisineRepository.GetOrFailAsync(id);
             await _cuisineRepository.DeleteAsync(cuisine);
             await Task.CompletedTask;
         }
