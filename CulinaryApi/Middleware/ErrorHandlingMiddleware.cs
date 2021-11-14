@@ -20,7 +20,7 @@ namespace CulinaryApi.Middleware
             {
                 await next.Invoke(context);
             }
-            catch(NotFoundException notFoundException)
+            catch (NotFoundException notFoundException)
             {
                 context.Response.StatusCode = 404;
                 await context.Response.WriteAsync(notFoundException.Message);

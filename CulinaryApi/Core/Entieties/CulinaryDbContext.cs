@@ -11,9 +11,19 @@ namespace CulinaryApi.Core.Entieties
         public DbSet<Difficulty> Difficulties { get; set; }
         public DbSet<Cuisine> Cuisines { get; set; }
         public DbSet<Time> TImes { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>()
+              .Property(u => u.Email)
+              .IsRequired();
+
+            modelBuilder.Entity<Role>()
+             .Property(u => u.Name)
+             .IsRequired();
+
             modelBuilder.Entity<Recipe>()
                 .Property(l => l.Name)
                 .IsRequired();

@@ -1,7 +1,10 @@
-﻿namespace CulinaryApi.Infrastructure.DTO.Recipes
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CulinaryApi.Infrastructure.DTO.Recipes
 {
     public class UpdateRecipeDto
     {
+        [Required]
         public string Name { get; set; }
         public string Grammar { get; set; }
         public string Execution { get; set; }

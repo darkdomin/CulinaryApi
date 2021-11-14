@@ -42,21 +42,21 @@ namespace CulinaryApi.Infrastructure.Repositories
         }
         public async Task AddAsync(Cuisine cuisine)
         {
-            _dbContext.Cuisines.Add(cuisine);
-            _dbContext.SaveChanges();
+            await _dbContext.Cuisines.AddAsync(cuisine);
+            await _dbContext.SaveChangesAsync();
             await Task.CompletedTask;
         }
 
         public async Task UpdateAsync()
         {
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
             await Task.CompletedTask;
         }
 
         public async Task DeleteAsync(Cuisine cuisine)
         {
             _dbContext.Cuisines.Remove(cuisine);
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
             await Task.CompletedTask;
         }
     }

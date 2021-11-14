@@ -25,6 +25,8 @@ namespace CulinaryApi.Controllers
             var time = await _timeService.GetAsync(id);
             return Ok(time);
         }
+
+        [HttpGet]
         public async Task<ActionResult> Get()
         {
             var times = await _timeService.BrowseAsync();

@@ -48,13 +48,17 @@ namespace CulinaryApi
             services.AddScoped<ITimeService, TimeService>();
             services.AddScoped<IDifficultyRepository, DifficultyRepository>();
             services.AddScoped<IDifficultyService, DifficultyService>();
+            services.AddScoped<IDataInitializer, DataInitializer>();
             services.AddAutoMapper(this.GetType().Assembly);
             services.AddScoped<ErrorHandlingMiddleware>();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDataInitializer initializer)
         {
+            SeedData(initializer);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -64,6 +68,13 @@ namespace CulinaryApi
 
             app.UseHttpsRedirection();
 
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Culinary Api");
+            });
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -72,6 +83,11 @@ namespace CulinaryApi
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private void SeedData(IDataInitializer initializer)
+        {
+            initializer.SeedAsync();
         }
     }
 }
