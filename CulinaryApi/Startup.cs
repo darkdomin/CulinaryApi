@@ -48,6 +48,7 @@ namespace CulinaryApi
             services.AddScoped<ITimeService, TimeService>();
             services.AddScoped<IDifficultyRepository, DifficultyRepository>();
             services.AddScoped<IDifficultyService, DifficultyService>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IDataInitializer, DataInitializer>();
             services.AddAutoMapper(this.GetType().Assembly);
             services.AddScoped<ErrorHandlingMiddleware>();
@@ -85,7 +86,7 @@ namespace CulinaryApi
             });
         }
 
-        private void SeedData(IDataInitializer initializer)
+        private static void SeedData(IDataInitializer initializer)
         {
             initializer.SeedAsync();
         }
