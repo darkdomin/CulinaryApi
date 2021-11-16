@@ -22,7 +22,7 @@ namespace CulinaryApi.Middleware
             }
             catch (UserExistsException existsException)
             {
-                context.Response.StatusCode = 403;
+                context.Response.StatusCode = 400;
                 await context.Response.WriteAsync(existsException.Message);
             }
             catch (NotFoundException notFoundException)

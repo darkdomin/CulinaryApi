@@ -32,12 +32,13 @@ namespace CulinaryApi.Infrastructure.Services.Users
                 throw new UserExistsException($"User with email : '{user.Email}' already exists");
             }
 
-            user.SetEmail(dto.Email);
-            user.SetRole(dto.RoleId);
-            var hashedpass = _password.HashPassword(user, dto.Password);
-            user.SetPasswordHash(hashedpass);
+            var newUser = new User();
+            newUser.SetEmail(dto.Email);
+            newUser.SetRole(dto.RoleId);
+            var hashedpass = _password.HashPassword(newUser, dto.Password);
+            newUser.SetPasswordHash(hashedpass);
 
-            await _userRepository.AddAsync(user);
+            await _userRepository.AddAsync(newUser);
         }
     }
 }

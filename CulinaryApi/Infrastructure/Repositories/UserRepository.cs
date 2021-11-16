@@ -20,7 +20,7 @@ namespace CulinaryApi.Infrastructure.Repositories
 
         public async Task<User> GetAsync(string email)
         { 
-          return await Task.FromResult(dbContext.Users.SingleOrDefault(x => x.Email.ToLowerInvariant() ==               email.ToLowerInvariant()));
+          return await Task.FromResult(dbContext.Users.FirstOrDefault(x => x.Email.ToLower() ==               email.ToLower()));
         }
 
         public async Task AddAsync(User user)
