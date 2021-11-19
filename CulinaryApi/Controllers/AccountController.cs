@@ -24,9 +24,9 @@ namespace CulinaryApi.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult> LoginAsync([FromBody] LoginDto dto)
+        public async Task<ActionResult> LoginAsync([FromBody] LoginDto dto) 
         {
-            var token = await _userService.LoginAsync(dto);
+            var token =  await _userService.LoginAsync(dto); 
             return Ok(token);
         }
     }

@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace CulinaryApi.Infrastructure.Extensions
 {
-    public static class RepositoryExtensions
+    public static class RepositoryExtension
     {
         public static async Task<Recipe> GetOrFailAsync(this IRecipeRepository repository, int id)
         {

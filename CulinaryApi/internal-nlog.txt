@@ -194,3 +194,251 @@
 2021-11-16 22:20:16.3948 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
 2021-11-16 22:20:16.4179 Info Configuration initialized.
 2021-11-16 22:20:16.4179 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-18 20:14:16.4584 Info Message Template Auto Format enabled
+2021-11-18 20:14:16.4994 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-18 20:14:16.5945 Info Adding target FileTarget(Name=exceptions)
+2021-11-18 20:14:16.6326 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-18 20:14:16.6551 Info Configuration initialized.
+2021-11-18 20:14:16.6551 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-18 20:24:26.5176 Info Message Template Auto Format enabled
+2021-11-18 20:24:26.5668 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-18 20:24:26.6481 Info Adding target FileTarget(Name=exceptions)
+2021-11-18 20:24:26.6801 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-18 20:24:26.7107 Info Configuration initialized.
+2021-11-18 20:24:26.7107 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-18 20:26:24.2865 Info Message Template Auto Format enabled
+2021-11-18 20:26:24.3316 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-18 20:26:24.4040 Info Adding target FileTarget(Name=exceptions)
+2021-11-18 20:26:24.4376 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-18 20:26:24.4664 Info Configuration initialized.
+2021-11-18 20:26:24.4664 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-18 20:34:20.3263 Info Message Template Auto Format enabled
+2021-11-18 20:34:20.6722 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-18 20:34:20.7590 Info Adding target FileTarget(Name=exceptions)
+2021-11-18 20:34:20.7949 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-18 20:34:20.8152 Info Configuration initialized.
+2021-11-18 20:34:20.8152 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-18 20:35:40.1579 Info Message Template Auto Format enabled
+2021-11-18 20:35:40.2010 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-18 20:35:40.2841 Info Adding target FileTarget(Name=exceptions)
+2021-11-18 20:35:40.3253 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-18 20:35:40.3471 Info Configuration initialized.
+2021-11-18 20:35:40.3471 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-18 20:35:52.5391 Info AppDomain Shutting down. Logger closing...
+2021-11-18 20:35:52.5758 Info Logger has been shut down.
+2021-11-18 20:36:09.4067 Info Message Template Auto Format enabled
+2021-11-18 20:36:09.5400 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-18 20:36:09.5948 Info Adding target FileTarget(Name=exceptions)
+2021-11-18 20:36:09.6217 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-18 20:36:09.6423 Info Configuration initialized.
+2021-11-18 20:36:09.6430 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-18 20:42:04.8426 Info Message Template Auto Format enabled
+2021-11-18 20:42:04.8916 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-18 20:42:04.9517 Info Adding target FileTarget(Name=exceptions)
+2021-11-18 20:42:04.9893 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-18 20:42:05.0183 Info Configuration initialized.
+2021-11-18 20:42:05.0183 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-18 21:13:37.9102 Info Message Template Auto Format enabled
+2021-11-18 21:13:37.9646 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-18 21:13:38.0407 Info Adding target FileTarget(Name=exceptions)
+2021-11-18 21:13:38.0732 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-18 21:13:38.0940 Info Configuration initialized.
+2021-11-18 21:13:38.0940 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-18 21:15:33.3387 Info AppDomain Shutting down. Logger closing...
+2021-11-18 21:15:33.3596 Info Logger has been shut down.
+2021-11-18 21:15:49.0315 Info Message Template Auto Format enabled
+2021-11-18 21:15:49.0827 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-18 21:15:49.1483 Info Adding target FileTarget(Name=exceptions)
+2021-11-18 21:15:49.1802 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-18 21:15:49.2060 Info Configuration initialized.
+2021-11-18 21:15:49.2060 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-18 21:20:57.7980 Info Message Template Auto Format enabled
+2021-11-18 21:20:58.1623 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-18 21:20:58.2258 Info Adding target FileTarget(Name=exceptions)
+2021-11-18 21:20:58.2547 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-18 21:20:58.2785 Info Configuration initialized.
+2021-11-18 21:20:58.2785 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-18 21:23:37.2932 Info Message Template Auto Format enabled
+2021-11-18 21:23:37.3457 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-18 21:23:37.4045 Info Adding target FileTarget(Name=exceptions)
+2021-11-18 21:23:37.4331 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-18 21:23:37.4556 Info Configuration initialized.
+2021-11-18 21:23:37.4556 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-18 21:23:50.3745 Info AppDomain Shutting down. Logger closing...
+2021-11-18 21:23:50.3919 Info Logger has been shut down.
+2021-11-18 21:30:57.3261 Info Message Template Auto Format enabled
+2021-11-18 21:30:57.4355 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-18 21:30:57.5049 Info Adding target FileTarget(Name=exceptions)
+2021-11-18 21:30:57.5384 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-18 21:30:57.5664 Info Configuration initialized.
+2021-11-18 21:30:57.5664 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-18 21:33:01.6265 Info Message Template Auto Format enabled
+2021-11-18 21:33:01.6782 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-18 21:33:01.7531 Info Adding target FileTarget(Name=exceptions)
+2021-11-18 21:33:01.7845 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-18 21:33:01.8062 Info Configuration initialized.
+2021-11-18 21:33:01.8062 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-18 21:33:27.0497 Info Message Template Auto Format enabled
+2021-11-18 21:33:27.0814 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-18 21:33:27.1395 Info Adding target FileTarget(Name=exceptions)
+2021-11-18 21:33:27.1647 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-18 21:33:27.1851 Info Configuration initialized.
+2021-11-18 21:33:27.1851 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 19:37:11.6026 Info Message Template Auto Format enabled
+2021-11-19 19:37:11.6625 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 19:37:11.7447 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 19:37:11.7747 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 19:37:11.7910 Info Configuration initialized.
+2021-11-19 19:37:11.7910 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 19:38:44.6399 Info Message Template Auto Format enabled
+2021-11-19 19:38:45.0486 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 19:38:45.1195 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 19:38:45.1568 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 19:38:45.1798 Info Configuration initialized.
+2021-11-19 19:38:45.1798 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 19:39:45.7670 Info Message Template Auto Format enabled
+2021-11-19 19:39:45.8092 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 19:39:45.8657 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 19:39:45.8965 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 19:39:45.9164 Info Configuration initialized.
+2021-11-19 19:39:45.9164 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 19:41:52.1408 Info Message Template Auto Format enabled
+2021-11-19 19:41:52.1837 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 19:41:52.2555 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 19:41:52.2882 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 19:41:52.3141 Info Configuration initialized.
+2021-11-19 19:41:52.3152 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 19:42:18.8431 Info Message Template Auto Format enabled
+2021-11-19 19:42:18.8860 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 19:42:18.9528 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 19:42:18.9883 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 19:42:19.0144 Info Configuration initialized.
+2021-11-19 19:42:19.0144 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 19:43:53.9565 Info Message Template Auto Format enabled
+2021-11-19 19:43:54.0082 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 19:43:54.0650 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 19:43:54.0901 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 19:43:54.1085 Info Configuration initialized.
+2021-11-19 19:43:54.1085 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 19:44:25.6508 Info Message Template Auto Format enabled
+2021-11-19 19:44:25.7002 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 19:44:25.7743 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 19:44:25.8046 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 19:44:25.8327 Info Configuration initialized.
+2021-11-19 19:44:25.8327 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 19:45:17.3173 Info AppDomain Shutting down. Logger closing...
+2021-11-19 19:45:17.3391 Info Logger has been shut down.
+2021-11-19 19:49:45.9605 Info Message Template Auto Format enabled
+2021-11-19 19:49:45.9803 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 19:49:46.0665 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 19:49:46.1099 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 19:49:46.1344 Info Configuration initialized.
+2021-11-19 19:49:46.1344 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 19:50:19.4755 Info Message Template Auto Format enabled
+2021-11-19 19:50:19.9120 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 19:50:19.9881 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 19:50:20.0147 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 19:50:20.0410 Info Configuration initialized.
+2021-11-19 19:50:20.0410 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 20:18:30.7710 Info Message Template Auto Format enabled
+2021-11-19 20:18:30.8137 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 20:18:30.8850 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 20:18:30.9215 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 20:18:30.9434 Info Configuration initialized.
+2021-11-19 20:18:30.9434 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 20:20:44.1010 Info AppDomain Shutting down. Logger closing...
+2021-11-19 20:20:44.1294 Info Logger has been shut down.
+2021-11-19 20:23:33.5532 Info Message Template Auto Format enabled
+2021-11-19 20:23:33.6008 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 20:23:33.6719 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 20:23:33.7063 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 20:23:33.7337 Info Configuration initialized.
+2021-11-19 20:23:33.7337 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 20:32:56.9701 Info Message Template Auto Format enabled
+2021-11-19 20:32:57.0203 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 20:32:57.0875 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 20:32:57.1127 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 20:32:57.1351 Info Configuration initialized.
+2021-11-19 20:32:57.1351 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 20:33:22.1772 Info AppDomain Shutting down. Logger closing...
+2021-11-19 20:33:22.1997 Info Logger has been shut down.
+2021-11-19 20:34:03.5504 Info Message Template Auto Format enabled
+2021-11-19 20:34:03.6005 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 20:34:03.6561 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 20:34:03.6916 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 20:34:03.7145 Info Configuration initialized.
+2021-11-19 20:34:03.7145 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 20:35:49.7899 Info AppDomain Shutting down. Logger closing...
+2021-11-19 20:35:49.8007 Info Logger has been shut down.
+2021-11-19 20:44:15.6631 Info Message Template Auto Format enabled
+2021-11-19 20:44:15.7087 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 20:44:15.7786 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 20:44:15.8104 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 20:44:15.8340 Info Configuration initialized.
+2021-11-19 20:44:15.8340 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 20:50:32.0798 Info Message Template Auto Format enabled
+2021-11-19 20:50:32.1333 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 20:50:32.2067 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 20:50:32.2456 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 20:50:32.2719 Info Configuration initialized.
+2021-11-19 20:50:32.2719 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 21:02:15.8009 Info Message Template Auto Format enabled
+2021-11-19 21:02:15.8452 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 21:02:15.9208 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 21:02:15.9566 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 21:02:15.9806 Info Configuration initialized.
+2021-11-19 21:02:15.9806 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 21:02:54.5596 Info AppDomain Shutting down. Logger closing...
+2021-11-19 21:02:54.5826 Info Logger has been shut down.
+2021-11-19 21:33:39.9782 Info Message Template Auto Format enabled
+2021-11-19 21:33:40.0273 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 21:33:40.0986 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 21:33:40.1297 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 21:33:40.1490 Info Configuration initialized.
+2021-11-19 21:33:40.1490 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 21:42:30.4146 Info Message Template Auto Format enabled
+2021-11-19 21:42:30.4626 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 21:42:30.5457 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 21:42:30.5782 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 21:42:30.6017 Info Configuration initialized.
+2021-11-19 21:42:30.6017 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 21:48:10.4010 Info Message Template Auto Format enabled
+2021-11-19 21:48:10.4481 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 21:48:10.5149 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 21:48:10.5542 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 21:48:10.5754 Info Configuration initialized.
+2021-11-19 21:48:10.5754 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 21:49:24.2976 Info Message Template Auto Format enabled
+2021-11-19 21:49:24.3437 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 21:49:24.4175 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 21:49:24.4586 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 21:49:24.4882 Info Configuration initialized.
+2021-11-19 21:49:24.4882 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 21:52:47.1989 Info AppDomain Shutting down. Logger closing...
+2021-11-19 21:52:47.2210 Info Logger has been shut down.
+2021-11-19 21:53:21.5967 Info Message Template Auto Format enabled
+2021-11-19 21:53:21.6465 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 21:53:21.7217 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 21:53:21.7603 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 21:53:21.7977 Info Configuration initialized.
+2021-11-19 21:53:21.7977 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 21:55:36.4787 Info AppDomain Shutting down. Logger closing...
+2021-11-19 21:55:36.5067 Info Logger has been shut down.
+2021-11-19 21:57:09.3867 Info Message Template Auto Format enabled
+2021-11-19 21:57:09.4056 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 21:57:09.4680 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 21:57:09.4990 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 21:57:09.5277 Info Configuration initialized.
+2021-11-19 21:57:09.5277 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 21:59:42.0541 Info Message Template Auto Format enabled
+2021-11-19 21:59:42.0779 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 21:59:42.1642 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 21:59:42.2047 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 21:59:42.2335 Info Configuration initialized.
+2021-11-19 21:59:42.2335 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False
+2021-11-19 22:01:13.0647 Info Message Template Auto Format enabled
+2021-11-19 22:01:13.1155 Info Loading assembly: NLog.Web.AspNetCore
+2021-11-19 22:01:13.1890 Info Adding target FileTarget(Name=exceptions)
+2021-11-19 22:01:13.2276 Info Validating config: TargetNames=exceptions, ConfigItems=18, FilePath=H:\Culinary\CulinaryApi\CulinaryApi\bin\Debug\net5.0\NLog.config
+2021-11-19 22:01:13.2552 Info Configuration initialized.
+2021-11-19 22:01:13.2552 Info NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 4.7.11.13229. Product version: 4.7.11+33ed3a9f86277651e93ddf39cda64a046a06778b. GlobalAssemblyCache: False

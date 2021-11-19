@@ -1,5 +1,6 @@
 ﻿using CulinaryApi.Core.Entieties;
 using CulinaryApi.Core.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -15,12 +16,18 @@ namespace CulinaryApi.Infrastructure.Repositories
         }
         public async Task<User> GetAsync(int id)
         { 
-           return await Task.FromResult(dbContext.Users.SingleOrDefault(x => x.Id == id));
+           return await Task.FromResult(dbContext
+                                        .Users
+                                        .Include(e => e.Role)
+                                        .SingleOrDefault(x => x.Id == id));
         }
 
         public async Task<User> GetAsync(string email)
         { 
-          return await Task.FromResult(dbContext.Users.FirstOrDefault(x => x.Email.ToLower() ==               email.ToLower()));
+          return await Task.FromResult(dbContext
+                                       .Users
+                                       .Include(e => e.Role)
+                                       .FirstOrDefault(x => x.Email.ToLower() == email.ToLower()));
         }
 
         public async Task AddAsync(User user)

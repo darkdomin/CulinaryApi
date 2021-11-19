@@ -20,6 +20,11 @@ namespace CulinaryApi.Middleware
             {
                 await next.Invoke(context);
             }
+            catch (BadRequestException badRequestException)
+            {
+                context.Response.StatusCode = 400;
+                await context.Response.WriteAsync(badRequestException.Message);
+            }
             catch (UserExistsException existsException)
             {
                 context.Response.StatusCode = 400;
