@@ -1,5 +1,6 @@
 ﻿using CulinaryApi.Infrastructure.DTO.Recipes;
 using CulinaryApi.Infrastructure.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -7,6 +8,7 @@ namespace CulinaryApi.Controllers
 {
     [Route("api/recipe")]
     [ApiController]
+    [Authorize(Roles = "User")]
     public class RecipeController : ControllerBase
     {
         private readonly IRecipeService _recipeService;

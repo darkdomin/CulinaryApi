@@ -1,9 +1,9 @@
-﻿using CulinaryApi.Infrastructure.DTO;
+﻿using CulinaryApi.Core.Entieties;
 
 namespace CulinaryApi.Infrastructure.Services
 {
     public interface IJwtHandler
     {
-        JwtDto CreateToken(int userId, string role);
+        string CreateToken(User user);
     }
 }

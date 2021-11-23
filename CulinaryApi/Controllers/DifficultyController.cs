@@ -1,14 +1,13 @@
 ﻿using CulinaryApi.Infrastructure.DTO.Difficulties;
 using CulinaryApi.Infrastructure.Services.Difficulties;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CulinaryApi.Controllers
 {
     [Route("api/recipe/difficulty")]
+    [Authorize(Roles = "Admin")]
     public class DifficultyController : ControllerBase
     {
         private readonly IDifficultyService _difficultyService;

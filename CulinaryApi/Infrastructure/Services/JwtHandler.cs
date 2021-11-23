@@ -1,7 +1,7 @@
-﻿using CulinaryApi.Infrastructure.DTO;
-using CulinaryApi.Infrastructure.Extensions;
+﻿using CulinaryApi.Core.Entieties;
 using Microsoft.IdentityModel.Tokens;
 using System;
+using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -16,37 +16,27 @@ namespace CulinaryApi.Infrastructure.Services
         {
             _jwtSettings = jwtSettings;
         }
-        public JwtDto CreateToken(int userId, string role)
+
+        public string CreateToken(User user)
         {
-            var now = DateTime.UtcNow;
-
-            var claims = new Claim[]
+            var claims = new List<Claim>()
             {
-                new Claim(JwtRegisteredClaimNames.Sub, userId.ToString()),
-                new Claim(JwtRegisteredClaimNames.UniqueName, userId.ToString()),
-                new Claim(ClaimTypes.Role, role),
-                new Claim(JwtRegisteredClaimNames.Iat, now.ToTimeStamp().ToString()),
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Email, $"{user.Email}"),
+                new Claim(ClaimTypes.Role, $"{user.Role.Name}"), 
             };
-
-            var expires = now.AddMinutes(_jwtSettings.JwtExpireMinutes);
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.JwtKey));
-            var signingCredentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var expires = DateTime.Now.AddDays(_jwtSettings.JwtExpireDays);
 
-            var jwt = new JwtSecurityToken(
-                issuer: _jwtSettings.JwtIssuer,
-                claims: claims,
-                notBefore: now,
+            var token = new JwtSecurityToken(_jwtSettings.JwtIssuer,
+                _jwtSettings.JwtIssuer,
+                claims,
                 expires: expires,
-                signingCredentials: signingCredentials);
-
+                signingCredentials: cred);
             var tokenHandler = new JwtSecurityTokenHandler();
-            var token = tokenHandler.WriteToken(jwt);
 
-            return new JwtDto
-            {
-                Token = token,
-                Expires = expires.ToTimeStamp()
-            };
+            return tokenHandler.WriteToken(token);
         }
     }
 }

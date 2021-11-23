@@ -7,6 +7,6 @@ namespace CulinaryApi.Infrastructure.Services.Users
     public interface IUserService
     {
         Task RegisterAsync(RegisterUserDto dto);
-        Task<TokenDto> LoginAsync(LoginDto dto);
+        Task<string> LoginAsync(LoginDto dto);//TokenDto
     }
 }

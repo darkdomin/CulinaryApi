@@ -1,15 +1,13 @@
-﻿using CulinaryApi.Core.Entieties;
-using CulinaryApi.Infrastructure.DTO.Cuisines;
+﻿using CulinaryApi.Infrastructure.DTO.Cuisines;
 using CulinaryApi.Infrastructure.Services.Cuisines;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CulinaryApi.Controllers
 {
     [Route("api/recipe/cuisine")]
+    [Authorize(Roles = "Admin")]
     public class CuisineController : ControllerBase
     {
         private readonly ICuisineService _cuisineService;

@@ -1,7 +1,6 @@
 ﻿using CulinaryApi.Core.Entieties;
 using CulinaryApi.Core.Repositories;
 using CulinaryApi.Exceptions;
-using CulinaryApi.Infrastructure.DTO;
 using CulinaryApi.Infrastructure.DTO.Users;
 using Microsoft.AspNetCore.Identity;
 using System.Threading.Tasks;
@@ -21,7 +20,7 @@ namespace CulinaryApi.Infrastructure.Services.Users
             _password = password;
             _handler = handler;
         }
-        public async Task<TokenDto> LoginAsync(LoginDto dto) 
+        public async Task<string> LoginAsync(LoginDto dto)
         {
             var user = await _userRepository.GetAsync(dto.Email);
 
@@ -32,19 +31,14 @@ namespace CulinaryApi.Infrastructure.Services.Users
 
             var result = _password.VerifyHashedPassword(user, user.PasswordHash, dto.Password);
 
-            if(result == PasswordVerificationResult.Failed)
+            if (result == PasswordVerificationResult.Failed)
             {
                 throw new BadRequestException("Invalid user name or password");
             }
 
-            var jwt = _handler.CreateToken(user.Id, user.Role.Name);
+            var token = _handler.CreateToken(user);
 
-            return new TokenDto
-            {
-                Token = jwt.Token,
-                Expires = jwt.Expires,
-                Role = user.Role.Name
-            };
+            return token;
         }
 
         public async Task RegisterAsync(RegisterUserDto dto)

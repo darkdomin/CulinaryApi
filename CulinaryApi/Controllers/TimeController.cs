@@ -1,15 +1,13 @@
-﻿using CulinaryApi.Core.Entieties;
-using CulinaryApi.Infrastructure.DTO.Times;
+﻿using CulinaryApi.Infrastructure.DTO.Times;
 using CulinaryApi.Infrastructure.Services.Times;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace CulinaryApi.Controllers
 {
     [Route("api/recipe/time")]
+    [Authorize(Roles = "Admin")]
     public class TimeController : ControllerBase
     {
         private readonly ITimeService _timeService;
