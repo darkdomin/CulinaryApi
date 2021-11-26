@@ -8,7 +8,7 @@ namespace CulinaryApi.Controllers
 {
     [Route("api/recipe")]
     [ApiController]
-    [Authorize(Roles = "User")]
+    [Authorize]
     public class RecipeController : ControllerBase
     {
         private readonly IRecipeService _recipeService;

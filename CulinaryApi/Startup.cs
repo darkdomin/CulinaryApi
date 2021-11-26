@@ -1,5 +1,6 @@
 using CulinaryApi.Core.Entieties;
 using CulinaryApi.Core.Repositories;
+using CulinaryApi.Infrastructure.Authorization;
 using CulinaryApi.Infrastructure.DTO.Users;
 using CulinaryApi.Infrastructure.Repositories;
 using CulinaryApi.Infrastructure.Services;
@@ -14,6 +15,7 @@ using CulinaryApi.Middleware;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -85,6 +87,8 @@ namespace CulinaryApi
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IDataInitializer, DataInitializer>();
             services.AddScoped<IJwtHandler, JwtHandler>();
+            services.AddScoped<IAuthorizationHandler, ResourceOperationRequirementHandler>();
+            services.AddScoped<IUserContextService, UserContextService>();
             services.AddAutoMapper(this.GetType().Assembly);
             services.AddScoped<ErrorHandlingMiddleware>();
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();

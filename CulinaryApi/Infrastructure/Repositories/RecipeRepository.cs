@@ -28,7 +28,7 @@ namespace CulinaryApi.Infrastructure.Repositories
             return result;
         }
 
-        public async Task<Recipe> GetAsync(string name)
+        public async Task<Recipe> GetAsync( string name )
         {
             return await Task.FromResult(_dbContext
                                          .Recipes
@@ -36,18 +36,19 @@ namespace CulinaryApi.Infrastructure.Repositories
                                          .Include(c => c.Cuisine)
                                          .Include(t => t.Time)
                                          .Include(d => d.Difficult)
-                                         .SingleOrDefault(r => r.Name == name));
+                                         .SingleOrDefault(r => r.Name == name ));
                                          
         }
 
-        public async Task<IEnumerable<Recipe>> GetAllAsync(string name = "")
+        public async Task<IEnumerable<Recipe>> GetAllAsync(int? userId, string name = "")
         {
             var recipes = _dbContext
                           .Recipes
-                          .Include(m=>m.Meal)
-                          .Include(c=>c.Cuisine)
-                          .Include(t=>t.Time)
-                          .Include(d=>d.Difficult)
+                          .Where(r=>r.CreateById == userId)
+                          .Include(m => m.Meal)
+                          .Include(c => c.Cuisine)
+                          .Include(t => t.Time)
+                          .Include(d => d.Difficult)
                           .AsEnumerable();
 
             if (!string.IsNullOrEmpty(name))
@@ -79,5 +80,7 @@ namespace CulinaryApi.Infrastructure.Repositories
             _dbContext.SaveChanges();
             await Task.CompletedTask;
         }
+
+
     }
 }

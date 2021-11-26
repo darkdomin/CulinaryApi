@@ -28,5 +28,10 @@
             }
             RoleId = roleId;
         }
+
+        public void ChangePassword(string passwordHash)
+        {
+            PasswordHash = passwordHash;
+        }
     }
 }

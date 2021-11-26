@@ -7,6 +7,9 @@
         public string Grammar { get; protected set; }
         public string Execution { get; protected set; }
 
+        public int? CreateById { get; set; }
+        public virtual User CreatedBy { get; set; }
+
         public int MealId { get; protected set; }
         public virtual Meal Meal { get; protected set; }
         public int CuisineId { get; protected set; }
