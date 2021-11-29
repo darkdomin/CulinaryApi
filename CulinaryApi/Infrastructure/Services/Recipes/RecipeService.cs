@@ -61,9 +61,9 @@ namespace CulinaryApi.Infrastructure.Services.Recipes
             return result;
         }
 
-        public async Task<IEnumerable<RecipeDto>> BrowseAsync(string name = null)
+        public async Task<IEnumerable<RecipeDto>> BrowseAsync(string searchPhrase = null)
         {
-            var recipes = await _recipeRepository.GetAllAsync(_userContextService.GetUserId, name);
+            var recipes = await _recipeRepository.GetAllAsync(_userContextService.GetUserId, searchPhrase);
 
             var result = _mapper.Map<IEnumerable<RecipeDto>>(recipes);
 

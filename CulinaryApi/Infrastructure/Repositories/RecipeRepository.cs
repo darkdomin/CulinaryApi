@@ -14,7 +14,7 @@ namespace CulinaryApi.Infrastructure.Repositories
         public RecipeRepository(CulinaryDbContext dbContext)
         {
             _dbContext = dbContext;
-        }                                                                  
+        }
 
         public async Task<Recipe> GetAsync(int id)
         {
@@ -28,7 +28,7 @@ namespace CulinaryApi.Infrastructure.Repositories
             return result;
         }
 
-        public async Task<Recipe> GetAsync( string name )
+        public async Task<Recipe> GetAsync(string name)
         {
             return await Task.FromResult(_dbContext
                                          .Recipes
@@ -36,15 +36,21 @@ namespace CulinaryApi.Infrastructure.Repositories
                                          .Include(c => c.Cuisine)
                                          .Include(t => t.Time)
                                          .Include(d => d.Difficult)
-                                         .SingleOrDefault(r => r.Name == name ));
-                                         
+                                         .SingleOrDefault(r => r.Name == name));
+
         }
 
         public async Task<IEnumerable<Recipe>> GetAllAsync(int? userId, string name = "")
         {
             var recipes = _dbContext
                           .Recipes
-                          .Where(r=>r.CreateById == userId)
+                          .Where(r => r.CreateById == userId && 
+                                     (
+                                         name == null ||
+                                     (
+                                          r.Name.ToLower().Contains(name.ToLower()) || 
+                                          r.Grammar.ToLower().Contains(name.ToLower())
+                                     )))
                           .Include(m => m.Meal)
                           .Include(c => c.Cuisine)
                           .Include(t => t.Time)
@@ -80,7 +86,5 @@ namespace CulinaryApi.Infrastructure.Repositories
             _dbContext.SaveChanges();
             await Task.CompletedTask;
         }
-
-
     }
 }
