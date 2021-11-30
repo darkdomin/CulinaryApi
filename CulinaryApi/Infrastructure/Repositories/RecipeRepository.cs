@@ -1,5 +1,6 @@
 ﻿using CulinaryApi.Core.Entieties;
 using CulinaryApi.Core.Repositories;
+using CulinaryApi.Infrastructure.DTO.Recipes;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,16 +41,16 @@ namespace CulinaryApi.Infrastructure.Repositories
 
         }
 
-        public async Task<IEnumerable<Recipe>> GetAllAsync(int? userId, string name = "")
+        public async Task<IEnumerable<Recipe>> GetAllAsync(int? userId, RecipeQuery query )
         {
-            var recipes = _dbContext
+            var baseRecipe = _dbContext
                           .Recipes
-                          .Where(r => r.CreateById == userId && 
+                          .Where(r => r.CreateById == userId &&
                                      (
-                                         name == null ||
+                                        query.SearchPhrase == null ||
                                      (
-                                          r.Name.ToLower().Contains(name.ToLower()) || 
-                                          r.Grammar.ToLower().Contains(name.ToLower())
+                                          r.Name.ToLower().Contains(query.SearchPhrase.ToLower()) ||
+                                          r.Grammar.ToLower().Contains(query.SearchPhrase.ToLower())
                                      )))
                           .Include(m => m.Meal)
                           .Include(c => c.Cuisine)
@@ -57,14 +58,14 @@ namespace CulinaryApi.Infrastructure.Repositories
                           .Include(d => d.Difficult)
                           .AsEnumerable();
 
-            if (!string.IsNullOrEmpty(name))
+            if (!string.IsNullOrEmpty(query.SearchPhrase))
             {
-                recipes = recipes
-                          .Where(r => r.Name.ToLowerInvariant().Contains(name.ToLowerInvariant()));
+                baseRecipe = baseRecipe
+                          .Where(r => r.Name.ToLower().Contains(query.SearchPhrase.ToLower()));
 
             }
 
-            return await Task.FromResult(recipes);
+            return await Task.FromResult(baseRecipe);
         }
 
         public async Task AddAsync(Recipe recipe)

@@ -26,9 +26,9 @@ namespace CulinaryApi.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult> Get([FromQuery] string searchPhrase)
+        public async Task<ActionResult> Get([FromQuery]RecipeQuery query)
         {
-            var recipes = await _recipeService.BrowseAsync(searchPhrase);
+            var recipes = await _recipeService.BrowseAsync(query);
             return Ok(recipes);
         }
 

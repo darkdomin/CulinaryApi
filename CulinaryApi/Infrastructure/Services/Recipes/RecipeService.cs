@@ -3,11 +3,13 @@ using CulinaryApi.Core.Entieties;
 using CulinaryApi.Core.Repositories;
 using CulinaryApi.Exceptions;
 using CulinaryApi.Infrastructure.Authorization;
+using CulinaryApi.Infrastructure.DTO;
 using CulinaryApi.Infrastructure.DTO.Recipes;
 using CulinaryApi.Infrastructure.Extensions;
 using CulinaryApi.Infrastructure.Services.Users;
 using Microsoft.AspNetCore.Authorization;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace CulinaryApi.Infrastructure.Services.Recipes
@@ -61,11 +63,18 @@ namespace CulinaryApi.Infrastructure.Services.Recipes
             return result;
         }
 
-        public async Task<IEnumerable<RecipeDto>> BrowseAsync(string searchPhrase = null)
+        public async Task<PagedResult<RecipeDto>> BrowseAsync(RecipeQuery query) 
         {
-            var recipes = await _recipeRepository.GetAllAsync(_userContextService.GetUserId, searchPhrase);
+            var recipes = await _recipeRepository.GetAllAsync(_userContextService.GetUserId, query);
 
-            var result = _mapper.Map<IEnumerable<RecipeDto>>(recipes);
+            var totalCount = recipes.Count();
+            recipes = recipes
+                          .Skip(query.PageSize * (query.PageNumber - 1))
+                          .Take(query.PageSize);
+
+            var recipesDtos = _mapper.Map<List<RecipeDto>>(recipes);
+
+            var result = new PagedResult<RecipeDto>(recipesDtos, totalCount , query.PageSize, query.PageNumber);
 
             return result;
         }
