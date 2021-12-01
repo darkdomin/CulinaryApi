@@ -1,6 +1,7 @@
 using CulinaryApi.Core.Entieties;
 using CulinaryApi.Core.Repositories;
 using CulinaryApi.Infrastructure.Authorization;
+using CulinaryApi.Infrastructure.DTO.Recipes;
 using CulinaryApi.Infrastructure.DTO.Users;
 using CulinaryApi.Infrastructure.Repositories;
 using CulinaryApi.Infrastructure.Services;
@@ -93,6 +94,7 @@ namespace CulinaryApi
             services.AddScoped<ErrorHandlingMiddleware>();
             services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
             services.AddScoped<IValidator<RegisterUserDto>, RegisterUserDtoValidator>();
+            services.AddScoped<IValidator<RecipeQuery>, RecipeQueryValidator>();
             services.AddSwaggerGen();
         }
 
