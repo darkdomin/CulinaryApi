@@ -15,7 +15,8 @@ namespace CulinaryApi.Infrastructure.Services.Users
         public ClaimsPrincipal User => _contextAccessor.HttpContext?.User;
         public int? GetUserId => User is null ? null : (int?)int.Parse(User.FindFirst(u => u
                                                                            .Type == ClaimTypes.NameIdentifier)
-                                                                          .Value
-                                                                      );
+                                                                           .Value
+                                                                       );
+
     }
 }

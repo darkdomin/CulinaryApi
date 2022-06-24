@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace CulinaryApi.Infrastructure.DTO
 {
     public class PagedResult<T>
     {
-        public List<T> Items { get; set; }
+        public List<T> Items { get; set; } 
         public int TotalPages { get; set; }
         public int ItemFrom { get; set; }
         public int ItemTo { get; set; }

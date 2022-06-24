@@ -1,15 +1,18 @@
 ﻿using AutoMapper;
 using CulinaryApi.Core.Entieties;
 using CulinaryApi.Core.Repositories;
-using CulinaryApi.Exceptions;
 using CulinaryApi.Infrastructure.Authorization;
 using CulinaryApi.Infrastructure.DTO;
 using CulinaryApi.Infrastructure.DTO.Recipes;
 using CulinaryApi.Infrastructure.Extensions;
+using CulinaryApi.Infrastructure.Services.FavoriteCollection;
 using CulinaryApi.Infrastructure.Services.Users;
 using Microsoft.AspNetCore.Authorization;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace CulinaryApi.Infrastructure.Services.Recipes
@@ -20,89 +23,125 @@ namespace CulinaryApi.Infrastructure.Services.Recipes
         private readonly IMapper _mapper;
         private readonly IAuthorizationService _authorizationService;
         private readonly IUserContextService _userContextService;
+        private readonly TestEmail _testEmail;
+        private readonly IFavoriteCollection _favoriteCollection;
 
-        public RecipeService(IRecipeRepository recipeRepository, IMapper mapper, IAuthorizationService authorizationService, IUserContextService userContextService)
+        public RecipeService(IRecipeRepository recipeRepository, IMapper mapper, IAuthorizationService authorizationService, IUserContextService userContextService, TestEmail testEmail, IFavoriteCollection favoriteCollection
+           )
         {
             _recipeRepository = recipeRepository;
             _mapper = mapper;
             _authorizationService = authorizationService;
             _userContextService = userContextService;
+            _testEmail = testEmail;
+            _favoriteCollection = favoriteCollection;
         }
 
         public async Task<RecipeDto> GetAsync(int id)
         {
-            var recipe = await _recipeRepository.GetOrFailAsync(id);
+            var recipe = await GetAuthorizedRecipe(id);
 
-            var authorizationResult = await _authorizationService.AuthorizeAsync(_userContextService.User, recipe,
-                                      new ResourceOperationRequirement(ResourceOperation.READ));
-            if (!authorizationResult.Succeeded)
+            var favRecipe = await _favoriteCollection.GetId(recipe.Id);
+
+            if (favRecipe == null)
             {
-                throw new ForbidException();
+                favRecipe = FavoriteRecipe.Creator(recipe.Id);
+                await _favoriteCollection.Add(favRecipe);
             }
 
-            var result = _mapper.Map<RecipeDto>(recipe);
-            return result;
+            favRecipe.IncreaseCounter();
+            await _favoriteCollection.Update(favRecipe);
+
+            return _mapper.Map<RecipeDto>(recipe);
         }
 
-        public async Task<RecipeDto> GetAsync(string name)
-        {
-            var recipe = await _recipeRepository.GetAsync(name);
-            if (recipe == null)
-            {
-                throw new NotFoundException("Recipe not found.");
-            }
-
-            var authorizationResult = await _authorizationService.AuthorizeAsync(_userContextService.User, recipe,
-                                      new ResourceOperationRequirement(ResourceOperation.READ));
-            if (!authorizationResult.Succeeded)
-            {
-                throw new ForbidException();
-            }
-
-            var result = _mapper.Map<RecipeDto>(recipe);
-            return result;
-        }
-
-        public async Task<PagedResult<RecipeDto>> BrowseAsync(RecipeQuery query) 
+        public async Task<PagedResult<RecipeDto>> BrowseAsync(RecipeQuery query)
         {
             var recipes = await _recipeRepository.GetAllAsync(_userContextService.GetUserId, query);
-
             var totalCount = recipes.Count();
+
+            if (!string.IsNullOrEmpty(query.SearchPhrase))
+            {
+                recipes = RecipeServiceExtension.SearchEngine(query, recipes);
+            }
+
             recipes = recipes
-                          .Skip(query.PageSize * (query.PageNumber - 1))
-                          .Take(query.PageSize);
+                      .Skip(query.PageSize * (query.PageNumber - 1))
+                      .Take(query.PageSize);
 
+            //var recipesDtos = SorterAndConvertToDto(query, ref recipes);
             var recipesDtos = _mapper.Map<List<RecipeDto>>(recipes);
+            return new PagedResult<RecipeDto>(recipesDtos, totalCount, query.PageSize, query.PageNumber);
+        }
 
-            var result = new PagedResult<RecipeDto>(recipesDtos, totalCount , query.PageSize, query.PageNumber);
+        public async Task<PagedResult<RecipeDto>> BrowseHomeAsync(RecipeQuery query)
+        {
+            var recipes = await _recipeRepository.GetAllAsync(_userContextService.GetUserId, query);
+            var totalCount = recipes.Count();
+            if (query.Meal != 0)
+            {
+                recipes = recipes.Where(r => r.Meal.Id == query.Meal &&
+                                        r.Time.Id == query.Time
+                );
+            }
 
-            return result;
+            if (query.IsHome)
+            {
+                recipes = RecipeServiceExtension.StartPage(recipes, 12);
+            }
+            else
+            {
+                var favorits = await _favoriteCollection.GetFavorites();
+
+                var result = RecipeServiceExtension.FavoritesResult(recipes, favorits.AsQueryable());
+                if (result.Count() < 3)
+                {
+                    recipes = null;
+                }
+            }
+
+           // var recipesDtos = SorterAndConvertToDto(query, ref recipes);
+            var recipesDtos = _mapper.Map<List<RecipeDto>>(recipes);
+            return new PagedResult<RecipeDto>(recipesDtos, totalCount, query.PageSize, query.PageNumber);
         }
 
         public async Task<int> CreateAsync(CreateRecipeDto dto)
         {
             var newRecipe = _mapper.Map<Recipe>(dto);
 
-            newRecipe.CreateById = _userContextService.GetUserId;
+            string email = GetUserEmail();
 
-            await _recipeRepository.AddAsync(newRecipe);
+            newRecipe.SetCreateBy(_userContextService.GetUserId);
+
+            if (email == _testEmail.Email)
+            {
+                var result = await _recipeRepository.GetAll(_userContextService.GetUserId);
+                if (result.Count() < _testEmail.Max)
+                {
+
+                    await _recipeRepository.AddAsync(newRecipe);
+                }
+            }
+            else
+            {
+                await _recipeRepository.AddAsync(newRecipe);
+            }
+
+            var favRecipe = FavoriteRecipe.Creator(newRecipe.Id);
+            await _favoriteCollection.Add(favRecipe);
+
             return newRecipe.Id;
         }
 
         public async Task UpdateAsync(UpdateRecipeDto dto, int id)
         {
-            var recipe = await _recipeRepository.GetOrFailAsync(id);
-
-            var authorizationResult = await _authorizationService.AuthorizeAsync(_userContextService.User, recipe,
-                                      new ResourceOperationRequirement(ResourceOperation.UPDATE));
-            if (!authorizationResult.Succeeded)
-            {
-                throw new ForbidException();
-            }
+            var recipe = await GetAuthorizedRecipe(id);
 
             recipe.SetName(dto.Name);
             recipe.SetGrammar(dto.Grammar);
             recipe.SetExecution(dto.Execution);
+            recipe.SetPhoto(dto.Photo);
+            recipe.SetShortDescription(dto.ShortDescription);
             recipe.SetMealId(dto.MealId);
             recipe.SetCuisineId(dto.CuisineId);
             recipe.SetDifficultId(dto.DifficultId);
@@ -114,17 +153,58 @@ namespace CulinaryApi.Infrastructure.Services.Recipes
 
         public async Task DeleteAsync(int id)
         {
+            var recipe = await GetAuthorizedRecipe(id);
+
+            string email = GetUserEmail();
+            var userId = _userContextService.GetUserId;
+
+            var favRecipe = await _favoriteCollection.GetId(recipe.Id);
+
+            await _favoriteCollection.Remove(favRecipe);
+            if (email == _testEmail.Email)
+            {
+                var result = await _recipeRepository.GetAll(userId);
+                var resultCount = result.Count();
+                if (resultCount < _testEmail.Min)
+                {
+                    await _recipeRepository.DeleteAsync(recipe);
+                }
+            }
+            else
+            {
+                await _recipeRepository.DeleteAsync(recipe);
+            }
+        }
+
+        // -- private method --//
+
+        private string GetUserEmail()
+        {
+            return _userContextService.User.FindFirst(x => x.Type == ClaimTypes.Name).Value;
+        }
+
+        private async Task<AuthorizationResult> Authorization(Recipe recipe)
+        {
+            return await _authorizationService.AuthorizeAsync(_userContextService.User, recipe,
+                         new ResourceOperationRequirement(ResourceOperation.READ));
+        }
+
+        private async Task<Recipe> GetAuthorizedRecipe(int id)
+        {
             var recipe = await _recipeRepository.GetOrFailAsync(id);
 
-            var authorizationResult = await _authorizationService.AuthorizeAsync(_userContextService.User, recipe,
-                                      new ResourceOperationRequirement(ResourceOperation.DELETE));
-            if (!authorizationResult.Succeeded)
-            {
-                throw new ForbidException();
-            }
+            var authorizationResult = await Authorization(recipe);
 
-            await _recipeRepository.DeleteAsync(recipe);
-            await Task.CompletedTask;
+            RecipeServiceExtension.AuthorizationForbidden(authorizationResult);
+            return recipe;
+        }
+
+        private List<RecipeDto> SorterAndConvertToDto(RecipeQuery query, ref IQueryable<Recipe> recipes)
+        {
+            recipes = RecipeServiceExtension.Sorter(query, recipes);
+
+            var recipesDtos = _mapper.Map<List<RecipeDto>>(recipes);
+            return recipesDtos;
         }
     }
 }

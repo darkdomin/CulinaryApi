@@ -1,24 +1,33 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+
 namespace CulinaryApi.Core.Entieties
 {
     public class CulinaryDbContext : DbContext
     {
-        private string _connectionString = "Data Source=DARK\\SQLEXPRESS;Database=CulinaryDb;Trusted_Connection=True";
+        public CulinaryDbContext(DbContextOptions<CulinaryDbContext> options) : base(options)
+        {
 
-        public DbSet<Recipe> Recipes { get; set; }
-        public DbSet<Meal> Meals { get; set; }
-        public DbSet<Difficulty> Difficulties { get; set; }
-        public DbSet<Cuisine> Cuisines { get; set; }
-        public DbSet<Time> TImes { get; set; }
-        public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
+        }
+        
+        public DbSet<Recipe> Recipes { get; protected set; }
+        public DbSet<Meal> Meals { get; protected set; }
+        public DbSet<Difficulty> Difficulties { get; protected set; }
+        public DbSet<Cuisine> Cuisines { get; protected set; }
+        public DbSet<Time> TImes { get; protected set; }
+        public DbSet<User> Users { get; protected set; }
+        public DbSet<Role> Roles { get; protected set; }
+       public DbSet<FavoriteRecipe> FavoriteRecipe { get; protected set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
               .Property(u => u.Email)
               .IsRequired();
+
+            modelBuilder.Entity<User>()
+              .Property(u => u.Email)
+              .HasMaxLength(20);
 
             modelBuilder.Entity<Role>()
              .Property(u => u.Name)
@@ -43,11 +52,6 @@ namespace CulinaryApi.Core.Entieties
             modelBuilder.Entity<Time>()
                 .Property(l => l.Name)
                 .IsRequired();
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(_connectionString);
         }
     }
 }

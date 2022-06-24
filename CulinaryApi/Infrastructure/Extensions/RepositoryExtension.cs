@@ -12,48 +12,19 @@ namespace CulinaryApi.Infrastructure.Extensions
             var recipe = await repository.GetAsync(id);
             if (recipe == null)
             {
-                throw new NotFoundException("Recipe not found.");
+                throw new NotFoundException($"Recipe with {id} not found.");
             }
             return recipe;
         }
 
-        public static async Task<Meal> GetOrFailAsync(this IMealRepository repository, int id)
+        public static async Task<TEntity> GetOrFailAsync<TEntity>(this IFilterRepository<TEntity> repository, int id) where TEntity : Filter<TEntity>
         {
-            var meal = await repository.GetAsync(id);
-            if (meal == null)
+            var filter = await repository.GetAsync(id);
+            if (filter == null)
             {
-                throw new NotFoundException("Meal not found.");
+                throw new NotFoundException("FIlter not found.");
             }
-            return meal;
-        }
-        public static async Task<Cuisine> GetOrFailAsync(this ICuisineRepository repository, int id)
-        {
-            var cuisine = await repository.GetAsync(id);
-            if (cuisine == null)
-            {
-                throw new NotFoundException("Cuisine not found.");
-            }
-            return cuisine;
-        }
-
-        public static async Task<Difficulty> GetOrFailAsync(this IDifficultyRepository repository, int id)
-        {
-            var difficulty = await repository.GetAsync(id);
-            if (difficulty == null)
-            {
-                throw new NotFoundException("Difficulty not found.");
-            }
-            return difficulty;
-        }
-
-        public static async Task<Time> GetOrFailAsync(this ITimeRepository repository, int id)
-        {
-            var time = await repository.GetAsync(id);
-            if (time == null)
-            {
-                throw new NotFoundException("Time not found.");
-            }
-            return time;
+            return filter;
         }
     }
 }

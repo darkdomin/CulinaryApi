@@ -2,7 +2,6 @@
 using CulinaryApi.Core.Repositories;
 using CulinaryApi.Infrastructure.DTO.Recipes;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,7 +15,18 @@ namespace CulinaryApi.Infrastructure.Repositories
         {
             _dbContext = dbContext;
         }
-
+        public async Task<IQueryable<Recipe>> GetAll(int? userId)
+        {
+            var result = await Task.FromResult(_dbContext
+                                        .Recipes
+                                        .Where(u=>u.CreateById == userId)
+                                        .Include(m => m.Meal)
+                                        .Include(c => c.Cuisine)
+                                        .Include(t => t.Time)
+                                        .Include(d => d.Difficult));
+            return result;
+                                          
+        }
         public async Task<Recipe> GetAsync(int id)
         {
             var result = await Task.FromResult(_dbContext
@@ -29,41 +39,19 @@ namespace CulinaryApi.Infrastructure.Repositories
             return result;
         }
 
-        public async Task<Recipe> GetAsync(string name)
-        {
-            return await Task.FromResult(_dbContext
-                                         .Recipes
-                                         .Include(m => m.Meal)
-                                         .Include(c => c.Cuisine)
-                                         .Include(t => t.Time)
-                                         .Include(d => d.Difficult)
-                                         .SingleOrDefault(r => r.Name == name));
-
-        }
-
-        public async Task<IEnumerable<Recipe>> GetAllAsync(int? userId, RecipeQuery query )
+        public async Task<IQueryable<Recipe>> GetAllAsync(int? userId, RecipeQuery query)
         {
             var baseRecipe = _dbContext
-                          .Recipes
-                          .Where(r => r.CreateById == userId &&
-                                     (
-                                        query.SearchPhrase == null ||
-                                     (
-                                          r.Name.ToLower().Contains(query.SearchPhrase.ToLower()) ||
-                                          r.Grammar.ToLower().Contains(query.SearchPhrase.ToLower())
-                                     )))
+                             .Recipes
+                             .Where(r => r.CreateById == userId &&
+                                         (query.SearchPhrase == null ||
+                                           r.Name.ToLower().Contains(query.SearchPhrase.ToLower())
+                                         )
+                                    )
                           .Include(m => m.Meal)
                           .Include(c => c.Cuisine)
                           .Include(t => t.Time)
-                          .Include(d => d.Difficult)
-                          .AsEnumerable();
-
-            if (!string.IsNullOrEmpty(query.SearchPhrase))
-            {
-                baseRecipe = baseRecipe
-                          .Where(r => r.Name.ToLower().Contains(query.SearchPhrase.ToLower()));
-
-            }
+                          .Include(d => d.Difficult);
 
             return await Task.FromResult(baseRecipe);
         }

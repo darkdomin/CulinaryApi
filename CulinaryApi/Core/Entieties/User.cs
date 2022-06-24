@@ -1,37 +1,39 @@
-﻿namespace CulinaryApi.Core.Entieties
+﻿using System;
+
+namespace CulinaryApi.Core.Entieties
 {
-    public class User
+    public class User : Identity
     {
-        public int Id { get; protected set; }
         public string Email { get; protected set; }
         public string PasswordHash { get; protected set; }
 
         public int RoleId { get; protected set; }
         public virtual Role Role { get; protected set; }
 
-
+        protected User() { }
         public void SetEmail(string email)
         {
-            Email = email;
-        }
-
-        public void SetPasswordHash(string passwordHash)
-        {
-            PasswordHash = passwordHash;
+            Email = email ?? throw new ArgumentNullException("Email cannot be empty.");
         }
 
         public void SetRole(int roleId)
         {
-            if(roleId > 2)
+            if(roleId<= 0)
             {
-                RoleId = 1;
+                throw new ArgumentOutOfRangeException($"User Role Id {roleId} cannot be lower than 1");
             }
+
             RoleId = roleId;
         }
 
-        public void ChangePassword(string passwordHash)
+        public void SetPasswordHash(string passHash) 
         {
-            PasswordHash = passwordHash;
+            PasswordHash = passHash ?? throw new ArgumentNullException("Password hash cannot be empty.");
+        }
+
+        public static User CreateUser()
+        {
+            return new User();
         }
     }
 }

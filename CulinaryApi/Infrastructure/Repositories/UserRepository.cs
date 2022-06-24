@@ -1,6 +1,7 @@
 ﻿using CulinaryApi.Core.Entieties;
 using CulinaryApi.Core.Repositories;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -19,15 +20,15 @@ namespace CulinaryApi.Infrastructure.Repositories
            return await Task.FromResult(dbContext
                                         .Users
                                         .Include(e => e.Role)
-                                        .SingleOrDefault(x => x.Id == id));
+                                        .SingleOrDefault(x => x.Id == id)); 
         }
 
         public async Task<User> GetAsync(string email)
-        { 
-          return await Task.FromResult(dbContext
-                                       .Users
-                                       .Include(e => e.Role)
-                                       .FirstOrDefault(x => x.Email.ToLower() == email.ToLower()));
+        {
+            return await Task.FromResult(dbContext
+                                         .Users
+                                         .Include(e => e.Role)
+                                         .FirstOrDefault(x => x.Email.ToLower() == email.ToLower()));
         }
 
         public async Task AddAsync(User user)
@@ -37,8 +38,7 @@ namespace CulinaryApi.Infrastructure.Repositories
             await Task.CompletedTask;
         }
 
-
-        public async Task UpdateAsync(User user)
+        public async Task UpdateAsync()
         {
             await dbContext.SaveChangesAsync();
             await Task.CompletedTask;
@@ -49,6 +49,15 @@ namespace CulinaryApi.Infrastructure.Repositories
             dbContext.Users.Remove(user);
             await dbContext.SaveChangesAsync();
             await Task.CompletedTask;
+        }
+
+        public async Task<IEnumerable<User>> GetAsync()
+        {
+            return await Task.FromResult(dbContext
+                                        .Users
+                                        .Include(e => e.Role)
+                                        .AsEnumerable()
+                                        );
         }
     }
 }

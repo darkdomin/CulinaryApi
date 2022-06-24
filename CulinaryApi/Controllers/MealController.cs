@@ -1,23 +1,25 @@
-﻿using CulinaryApi.Infrastructure.DTO.Meals;
-using CulinaryApi.Infrastructure.Services.meals;
+﻿using CulinaryApi.Core.Entieties;
+using CulinaryApi.Infrastructure.DTO.FilterDto;
+using CulinaryApi.Infrastructure.Services.Filters;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace CulinaryApi.Controllers
 {
-    [Route("api/recipe/meal")]
-    [Authorize(Roles = "Admin")]
+    [Route("api/recipes/meals")]
+    [ApiController]
     public class MealController : ControllerBase
     {
-        private readonly IMealService _mealService;
+        private readonly IFilterService<Meal> _mealService;
 
-        public MealController(IMealService mealService)
+        public MealController(IFilterService<Meal> mealService)
         {
             _mealService = mealService;
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult> Get([FromRoute] int id)
         {
             var time = await _mealService.GetAsync(id);
@@ -25,6 +27,7 @@ namespace CulinaryApi.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult> Get()
         {
             var meals = await _mealService.BrowseAsync();
@@ -32,20 +35,23 @@ namespace CulinaryApi.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create([FromBody] CreateMealDto dto)
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> Create([FromBody] CreateFilterDto<Meal> dto)
         {
             var mealId = await _mealService.CreateAsync(dto);
-            return Created($"api/recipe/meal/{mealId}", null);
+            return Created($"api/meals/{mealId}", null);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> Update([FromBody] UpdateMealDto dto, int id)
+        [Authorize(Roles = "Admin")]
+        public async Task<ActionResult> Update([FromBody] UpdateFilterDto<Meal> dto, int id)
         {
             await _mealService.UpdateAsync(dto, id);
             return Ok();
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult> Delete([FromRoute] int id)
         {
             await _mealService.DeleteAsync(id);

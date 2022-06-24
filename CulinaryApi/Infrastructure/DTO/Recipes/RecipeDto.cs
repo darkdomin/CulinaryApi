@@ -2,12 +2,16 @@
 {
     public class RecipeDto
     {
+        public string Id { get; set; }
         public string Name { get; set; }
         public string Grammar { get; set; }
         public string Execution { get; set; }
-        public string Meal { get; set; }
-        public string Cuisine { get; set; }
-        public string Difficulty { get; set; }
-        public string Time { get; set; }
+        public string Photo { get; set; }
+        public string ShortDescription { get; set; }
+
+        public string MealId { get; set; }
+        public string CuisineId { get; set; }
+        public string DifficultId { get; set; }
+        public string TimeId { get; set; }
     }
 }

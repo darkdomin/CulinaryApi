@@ -1,17 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace CulinaryApi.Core.Entieties
+﻿namespace CulinaryApi.Core.Entieties
 {
-    public class Time
+    public class Time : Filter<Time>
     {
-        public int Id { get; protected set; }
-        public string Name { get; protected set; }
-
-        public virtual List<Recipe> Recipes { get; protected set; }
-
-        public void SetName(string name)
-        {
-            Name = name;
-        }
+        public Time(string name) : base(name)
+        { }
     }
 }
