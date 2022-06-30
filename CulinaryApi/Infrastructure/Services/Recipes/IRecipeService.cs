@@ -9,6 +9,7 @@ namespace CulinaryApi.Infrastructure.Services
         Task<RecipeDto> GetAsync(int id);
         Task<PagedResult<RecipeDto>> BrowseAsync(RecipeQuery dto);
         Task<PagedResult<RecipeDto>> BrowseHomeAsync(RecipeQuery dto);
+        Task<PagedResult<RecipeDto>> BrowseFavoriteAsync(RecipeQuery dto);
         Task<int> CreateAsync(CreateRecipeDto dto);
         Task UpdateAsync(UpdateRecipeDto dto, int id);
         Task DeleteAsync(int id);

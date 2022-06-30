@@ -58,6 +58,7 @@ namespace CulinaryApi.Infrastructure.Services.Recipes
         public async Task<PagedResult<RecipeDto>> BrowseAsync(RecipeQuery query)
         {
             var recipes = await _recipeRepository.GetAllAsync(_userContextService.GetUserId, query);
+
             var totalCount = recipes.Count();
 
             if (!string.IsNullOrEmpty(query.SearchPhrase))
@@ -78,29 +79,32 @@ namespace CulinaryApi.Infrastructure.Services.Recipes
         {
             var recipes = await _recipeRepository.GetAllAsync(_userContextService.GetUserId, query);
             var totalCount = recipes.Count();
-            if (query.Meal != 0)
+
+            recipes = RecipeServiceExtension.StartPage(recipes, 6);
+
+            // var recipesDtos = SorterAndConvertToDto(query, ref recipes);
+            var recipesDtos = _mapper.Map<List<RecipeDto>>(recipes);
+            return new PagedResult<RecipeDto>(recipesDtos, totalCount, query.PageSize, query.PageNumber);
+        }
+
+
+        public async Task<PagedResult<RecipeDto>> BrowseFavoriteAsync(RecipeQuery query)
+        {
+            var recipes = await _recipeRepository.GetAllAsync(_userContextService.GetUserId, query);
+            var totalCount = recipes.Count();
+
+            var favorits = await _favoriteCollection.GetFavorites();
+
+            var result = RecipeServiceExtension.FavoritesResult(recipes, favorits.AsQueryable());
+            recipes = result.AsQueryable();
+            int favortisNumber = result.Count();
+
+            if (favortisNumber < 3)
             {
-                recipes = recipes.Where(r => r.Meal.Id == query.Meal &&
-                                        r.Time.Id == query.Time
-                );
+                recipes = null;
             }
 
-            if (query.IsHome)
-            {
-                recipes = RecipeServiceExtension.StartPage(recipes, 12);
-            }
-            else
-            {
-                var favorits = await _favoriteCollection.GetFavorites();
-
-                var result = RecipeServiceExtension.FavoritesResult(recipes, favorits.AsQueryable());
-                if (result.Count() < 3)
-                {
-                    recipes = null;
-                }
-            }
-
-           // var recipesDtos = SorterAndConvertToDto(query, ref recipes);
+            // var recipesDtos = SorterAndConvertToDto(query, ref recipes);
             var recipesDtos = _mapper.Map<List<RecipeDto>>(recipes);
             return new PagedResult<RecipeDto>(recipesDtos, totalCount, query.PageSize, query.PageNumber);
         }

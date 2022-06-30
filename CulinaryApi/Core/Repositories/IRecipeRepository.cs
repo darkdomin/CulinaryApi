@@ -13,5 +13,6 @@ namespace CulinaryApi.Core.Repositories
         Task UpdateAsync();
         Task DeleteAsync(Recipe recipe);
         Task<IQueryable<Recipe>> GetAll(int? id);
+        Task<IQueryable<Recipe>> GetFilterAsync(int? getUserId, RecipeQuery query);
     }
 }

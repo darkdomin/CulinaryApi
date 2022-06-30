@@ -1,5 +1,4 @@
-﻿using CulinaryApi.Core.Entieties;
-using CulinaryApi.Infrastructure.DTO.Recipes;
+﻿using CulinaryApi.Infrastructure.DTO.Recipes;
 using CulinaryApi.Infrastructure.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -36,12 +35,18 @@ namespace CulinaryApi.Controllers
         }
 
         [HttpGet("home")]
-        public async Task<ActionResult> GetHome([FromQuery] RecipeQuery query)
+        public async Task<ActionResult> GetLatest([FromQuery] RecipeQuery query)
         {
             var recipes = await _recipeService.BrowseHomeAsync(query);
             return Ok(recipes);
         }
 
+        [HttpGet("favorite")]
+        public async Task<ActionResult> GetFavorite([FromQuery] RecipeQuery query)
+        {
+            var recipes = await _recipeService.BrowseFavoriteAsync(query);
+            return Ok(recipes);
+        }
 
         [HttpPost]
         public async Task<ActionResult> Create([FromBody] CreateRecipeDto dto)

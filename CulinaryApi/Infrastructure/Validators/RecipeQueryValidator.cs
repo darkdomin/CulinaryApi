@@ -1,5 +1,4 @@
 ﻿using CulinaryApi.Core.Entieties;
-using CulinaryApi.Core.Repositories;
 using CulinaryApi.Infrastructure.DTO.Recipes;
 using FluentValidation;
 using System;
@@ -9,10 +8,9 @@ namespace CulinaryApi.Infrastructure.Validators
 {
     public class RecipeQueryValidator : AbstractValidator<RecipeQuery>
     {
-        // private int[] allowedPageSize = new[] { 12 };
-        private readonly int allowedPageSize =  12 ;
+        private readonly int[] allowedPageSize = new[] { 6, 12 };
         private string[] allowedSortBycolumnNames = new[] { nameof(Recipe.Name), nameof(Recipe.Grammar) };
-        public RecipeQueryValidator(IRecipeRepository recipeRepository)
+        public RecipeQueryValidator()
         {
             bool dontGet = false;
             RuleFor(r => r.PageSize).Custom((value, context) =>
@@ -22,9 +20,7 @@ namespace CulinaryApi.Infrastructure.Validators
             RuleFor(r => r.PageNumber).GreaterThanOrEqualTo(1);
             RuleFor(r => r.PageSize).Custom((value, context) =>
             {
-                //if (!allowedPageSize.Contains(value) && dontGet == false)
-                //{
-                if (allowedPageSize != value && dontGet == false)
+                if (!allowedPageSize.Contains(value) && dontGet == false)
                 {
                     context.AddFailure("PageSize", $"Page Size must in [{string.Join(",", allowedPageSize)}]");
                 }

@@ -47,6 +47,31 @@ namespace CulinaryApi.Infrastructure.Repositories
                                          (query.SearchPhrase == null ||
                                            r.Name.ToLower().Contains(query.SearchPhrase.ToLower())
                                          )
+                                         && (query.Meal == 0 || r.MealId == query.Meal)
+                                         && (query.Cuisine == 0 || r.CuisineId == query.Cuisine)
+                                         && (query.Level == 0 || r.DifficultId == query.Level)
+                                         && (query.Time == 0 || r.TimeId == query.Time)
+                                    )
+                          .Include(m => m.Meal)
+                          .Include(c => c.Cuisine)
+                          .Include(t => t.Time)
+                          .Include(d => d.Difficult);
+
+            return await Task.FromResult(baseRecipe);
+        }
+
+        public async Task<IQueryable<Recipe>> GetFilterAsync(int? userId, RecipeQuery query)
+        {
+            var baseRecipe = _dbContext
+                             .Recipes
+                             .Where(r => r.CreateById == userId &&
+                                         (query.SearchPhrase == null ||
+                                           r.Name.ToLower().Contains(query.SearchPhrase.ToLower())
+                                         ) 
+                                         && query.Meal == 0 || r.MealId == query.Meal
+                                         && query.Cuisine == 0 || r.CuisineId == query.Cuisine
+                                         && query.Level == 0 || r.DifficultId == query.Level
+                                         && query.Time == 0 || r.TimeId == query.Time  
                                     )
                           .Include(m => m.Meal)
                           .Include(c => c.Cuisine)

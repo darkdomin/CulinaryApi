@@ -7,11 +7,10 @@
         public int PageSize { get; set; }
         public string SortBy { get; set; }
         public SortDirection SortDirection { get; set; }
-        public bool IsHome { get; set; }
 
         public int Meal { get; set; } = 0;
-        public int Time { get; set; }
-        public int Level { get; set; }
-        public int Cuisine { get; set; }
+        public int Time { get; set; } = 0;
+        public int Level { get; set; } = 0;
+        public int Cuisine { get; set; } = 0;
     }
 }
